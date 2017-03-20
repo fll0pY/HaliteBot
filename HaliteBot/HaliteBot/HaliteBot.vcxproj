@@ -112,10 +112,6 @@
   <ItemGroup>
     <ClCompile Include="MyBot.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="hlt.hpp" />
-    <ClInclude Include="networking.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -19,12 +19,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="hlt.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="networking.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>
