@@ -1,0 +1,1 @@
+.\halite.exe -d "50 50" -s 42 "HaliteBot.exe"
