@@ -1,0 +1,53 @@
+Mediul de dezvoltare:
+	- windows (visual studio) pentru cod
+	- linux pentru checker
+
+Compilare:
+	- compilatorul din visual studio
+	- Makefile pentru checker
+
+Structura Proiectului:
+	hlt.hpp
+		- contine structurile si clasele ajutatoare din schelet, putin modificate
+	MyBot.cpp
+		- functia setScores seteaza scorurile asa cum am explicat mai sus, adaugand si directia catre care trebuie sa se mute celula la urmatorul pas
+		- getMove returneaza cea mai buna mutare a unei celule pentru frame-ul respectiv
+	networking.hpp 
+		- din schelet
+	Makefile 
+		- fisier makefile
+
+Algoritmul:
+	- algoritm de tip Greedy
+	- se bazeaza pe logica de a aduce celulele din mijloc cat mai aproape de cea mai relevanta margine
+	- atribuim un scor celulelor din margine, pe care il propagam spre celulele din interior
+	1. Scorul
+		1.1	Pentru celulele de la margine scorul este calculat in functie de strength si productie
+			Constantele pentru acest raport s-au comportat bine pentru testele date si au fost gasite prin mai multe incercari si urmand sfaturile tutorialului [1]
+			Este relevant sa cucerim in primul rand celulele care au o productie mare si un strength mic, acestor celule atribuindu-le un scor mare
+		1.2	Pentru cele din interior mai luam in calcul si scorul vecinilor, incercand sa mergem spre celulele care au cea mai mare nevoie (cele care au cel mai mare scor). Pentru a realzia acest lucru, folosim un priority queue din care scoatem mereu celula cu scorul cel mai mare si dam un scor vecinilor din interior ai acestei celule, dupa care adaugam in coada si acesti vecini
+
+	2. Strategie
+		2.1 Cucerim mereu celula cu cea mai mare productie care poate fi cucerita
+		2.2 Mutam celula doar atunci cand strength-ul ei depaseste cu un anumit raport productia celulei respective
+
+	3. Complexitate
+		3.1	Complexitatea temporala a algoritmului este data de functia de atribuire a scorurilor si anume O(n^2 * log(n)) datorita parcurgerii matricii si adaugarii in priority queue.
+		3.2 Complexitatea spatiala este: O(n^2), deoarece mai folosim o matrice de bool-uri pentru marcaje si un priority queue
+
+Responsabilitati:
+	1. Research 
+		- Toti membrii echipei
+	2. Implementare
+		2.1 Varianta 0.0.1(Demo) - Popescu Mihai
+		2.2 Ultima varianta - Lincan Alexandru
+	3. Debug & Idei Auxiliare
+		- Serbanescu Teodora
+		- Gogonea Andrei
+	4. Documentatie
+		4.1 Scheletul documentatiei - Popescu Mihai
+		4.2 Continut - Toti membrii echipei
+
+Resurse:
+	[1] http://braino.org/thoughts/halite_the_simple_way.html
+	[2] http://forums.halite.io/
