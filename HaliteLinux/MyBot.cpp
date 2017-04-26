@@ -41,6 +41,7 @@ void setScores(hlt::GameMap& presentMap, int myID) {
 
 	priority_queue < hlt::Site, vector<hlt::Site>, scoreCompare> scoreQueue;
 
+
 	// Seteaza scoruri pentru site-urile din jurul bot-ului
 	for (unsigned short i = 0; i < presentMap.height; i++) {
 		for (unsigned short j = 0; j < presentMap.width; j++) {
@@ -55,7 +56,7 @@ void setScores(hlt::GameMap& presentMap, int myID) {
 					}
 				}
 				if (borderSite) {
-					site.score = site.production * 5 - (site.strength * 7 / 10);
+					site.score = site.production * 5 - (site.strength * 7 / 10); // 5 , 7 / 10
 					scoreQueue.emplace(site);
 				}
 			}
@@ -105,9 +106,18 @@ hlt::Move getMove(hlt::Location location, hlt::GameMap& presentMap, int myID) {
 		for (unsigned char d : CARDINALS) {
 			hlt::Site neighbour = presentMap.getSite(location, d);
 			if (neighbour.owner != myID) {
+				hlt::Site e = presentMap.getSite(neighbour.location, d);
 				if (neighbour.strength < site.strength && neighbour.production > maxProd) {
 					dir = d;
 					maxProd = neighbour.production;
+					if (e.owner == 0 || (e.owner != 0 && e.owner != myID &&
+						neighbour.owner != 0) || (e.owner == myID) || e.strength < site.strength) {
+						dir = d;
+						maxProd = neighbour.production;
+					} else {
+						return {location, STILL};
+					}
+					
 				}
 			}
 		}
@@ -116,7 +126,7 @@ hlt::Move getMove(hlt::Location location, hlt::GameMap& presentMap, int myID) {
 		return {location, dir};
 	}
 
-	if (site.strength < 6 * site.production && site.strength < 255) {
+	if (site.strength < 6 * site.production && site.strength < 255) { // 6
 		return {location, STILL};
 	}
 

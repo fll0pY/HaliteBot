@@ -39,4 +39,3 @@ Arguments
     --round      (Optional) Indicele etapei (1, 2, 3), default 2
     --clean      (Optional) Șterge fișierele de log/replays
     --visualiser (Optional) Numele browser-ului in care sa fie afisate rezultatele fiecarui joc
-

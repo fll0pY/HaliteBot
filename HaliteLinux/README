@@ -51,3 +51,11 @@ Responsabilitati:
 Resurse:
 	[1] http://braino.org/thoughts/halite_the_simple_way.html
 	[2] http://forums.halite.io/
+
+
+Update etapa 2:
+	1.1 Am adaugat pactul de neatacare (nu cuceresc celulele neutre dintre bot-ul meu si adversari atunci cand sunt doar la 1 patratica distanta de el).
+	1.2 Atac doar atunci cand sunt sigur ca o sa castig
+
+	2. Comanda testare:
+	python ./run.py --cmd "./MyBot" --round 2
